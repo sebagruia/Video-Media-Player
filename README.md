@@ -1,3 +1,12 @@
+# Video Media Player
+
+This a Web Video Media Player build using ReactJs and Redux
+
+## Project Status
+
+UNDER CONSTRUCTION
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,0 +1,10 @@
+.video{
+    cursor:pointer;
+}
+/* video:hover{
+    border:1px solid red;
+} */
+
+.activeClass{
+    border:10px solid red;
+}
