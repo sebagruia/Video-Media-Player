@@ -7,39 +7,39 @@ import Movie6 from "./assets/movies/See.mp4";
 import Movie7 from "./assets/movies/flower.mp4";
 
 export const movies = {
-  movie1: {
-    id: `movie1`,
+  PexelsVideos1572442: {
+    id: `PexelsVideos1572442`,
     src: Movie1,
-    active:false,
+    active:"false",
   },
-  movie2: {
-    id: `movie2`,
+  PexelsVideos2325178: {
+    id: `PexelsVideos2325178`,
     src: Movie2,
-    active:false,
+    active:"false",
   },
-  movie3: {
-    id: `movie3`,
+  PexelsVideos2675510: {
+    id: `PexelsVideos2675510`,
     src: Movie3,
-    active:false,
+    active:"false",
   },
-  movie4: {
-    id: `movie4`,
+  PexelsVideos2818546: {
+    id: `PexelsVideos2818546`,
     src: Movie4,
-    active:false,
+    active:"false",
   },
-  movie5: {
-    id: `movie5`,
+  Counting_Money: {
+    id: `Counting_Money`,
     src: Movie5,
-    active:false,
+    active:"false",
   },
-  movie6: {
-    id: `movie6`,
+  See: {
+    id: `See`,
     src: Movie6,
-    active:false,
+    active:"false",
   },
-  movie7: {
-    id: `movie7`,
+  Flower: {
+    id: `Flower`,
     src: Movie7,
-    active:false,
+    active:"false",
   },
 };

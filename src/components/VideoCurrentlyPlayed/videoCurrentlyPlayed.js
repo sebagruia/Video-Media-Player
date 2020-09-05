@@ -2,9 +2,16 @@ import React, { useEffect, useRef } from "react";
 import "./videoCurrentlyPlayed.css";
 import { connect } from "react-redux";
 import { addRefToCurrentVideo } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
+import { autoplayNext } from "../../utils";
 
-
-const VideoCurrentlyPlayed = ({ dispatch, currentVideoLink, loopValue }) => {
+const VideoCurrentlyPlayed = ({
+  dispatch,
+  currentVideoLink,
+  loopValue,
+  movies,
+  id,
+  allVideosRefs,
+}) => {
   const refToCurrentVideo = useRef(null);
   useEffect(() => {
     dispatch(addRefToCurrentVideo(refToCurrentVideo));
@@ -12,6 +19,7 @@ const VideoCurrentlyPlayed = ({ dispatch, currentVideoLink, loopValue }) => {
 
   return (
     <video
+      onEnded={() => autoplayNext(dispatch, allVideosRefs, movies, id)}
       className="video"
       width="100%"
       height="auto"
@@ -27,4 +35,12 @@ const VideoCurrentlyPlayed = ({ dispatch, currentVideoLink, loopValue }) => {
   );
 };
 
-export default connect()(VideoCurrentlyPlayed);
+const mapStateToProps = (state) => {
+  return {
+    movies: state.moviesReducer.movies,
+    id: state.currentMovieReducer.id,
+    allVideosRefs: state.videoReducer.allVideosRefs,
+  };
+};
+
+export default connect(mapStateToProps)(VideoCurrentlyPlayed);

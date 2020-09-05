@@ -11,10 +11,12 @@ export const getMoviesAction = (movies) => {
 export const selectActiveMovie = (movies, id) => {
   const moviesMapped = Object.values(movies).map((movie) => {
     if (movie.id === id) {
-      movie.active = true;
+      movie.active = "true";
+     
+
       return movie;
     } else {
-      movie.active = false;
+      movie.active = "false";
       return movie;
     }
   });

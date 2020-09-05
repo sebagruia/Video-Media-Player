@@ -5,15 +5,26 @@ import Video from "../Video/video";
 import { shuffle } from "../../utils";
 
 const List = ({ movies, shuffleValue }) => {
+
   const shuffledList = shuffle(Object.values(movies));
   return (
     <div className="list">
       {shuffleValue
         ? shuffledList.map((movie) => (
-            <Video key={movie.id} videoLink={movie.src} id={movie.id} active={movie.active}/>
+            <Video
+              key={movie.id}
+              videoLink={movie.src}
+              id={movie.id}
+              active={movie.active}
+            />
           ))
         : Object.values(movies).map((movie) => (
-            <Video key={movie.id} videoLink={movie.src} id={movie.id} active={movie.active}/>
+            <Video
+              key={movie.id}
+              videoLink={movie.src}
+              id={movie.id}
+              active={movie.active}
+            />
           ))}
     </div>
   );

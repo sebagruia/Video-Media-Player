@@ -1,20 +1,17 @@
-import React, {Component} from 'react';
-import './App.css';
-import {connect} from "react-redux";
-import {getMoviesAction} from "./redux/movies/movie-action";
-import {movies} from "./DATA";
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import { getMoviesAction } from "./redux/movies/movie-action";
+import { movies } from "./DATA";
 import VideoContainer from "./components/VideoContainer/videoContainer";
 import ListContainer from "./components/ListContainer/listContainer";
 
-
-
 class App extends Component {
-
-  componentDidMount(){
+  componentDidMount() {
     this.props.getMovies();
   }
 
-  render(){
+  render() {
     return (
       <div className="app-container">
         <VideoContainer />
@@ -22,13 +19,12 @@ class App extends Component {
       </div>
     );
   }
-  
 }
 
-const mapDispatchToProps = (dispatch)=>{
-    return{
-      getMovies:()=>dispatch(getMoviesAction(movies))
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getMovies: () => dispatch(getMoviesAction(movies)),
+  };
+};
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
