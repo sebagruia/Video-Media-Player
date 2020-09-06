@@ -14,7 +14,7 @@ export const moviesReducer = (state = initialState, action) => {
     case GET_MOVIES:
       return {
         ...state,
-        movies: Object.values(action.payload),
+        movies: action.payload,
       };
     case ADD_SHUFFLED_MOVIE_LIST:
       return {

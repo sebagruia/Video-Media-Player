@@ -51,7 +51,7 @@ export const autoplayNext = (dispatch, movies, id) => {
 };
 
 export const addRefKeyToEveryMovieObject = (id, ref, movies) => {
-  const moviesArray = movies;
+  const moviesArray = Object.values(movies);
   for (let i = 0; i < moviesArray.length; i++) {
     if(moviesArray[i].id === id){
       moviesArray[i].videoRef = ref;
@@ -69,4 +69,12 @@ export const clickPlay = (dispatch, id, playValue, refToVideo) => {
       dispatch(togglePlayVideo(!playValue));
     }
   }
+}
+
+export const scrollIntoView = (movies,index)=>{
+  movies[index].videoRef.current.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "nearest",
+  });
 }

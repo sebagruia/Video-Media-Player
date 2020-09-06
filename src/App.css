@@ -5,10 +5,9 @@
   margin-top: 100px;
   width: 992px;
   height: 391px;
-  border: 1px solid transparent;
   border-radius: 15px;
   overflow: hidden;
-  -webkit-box-shadow: -4px 6px 9px 0px rgba(173,168,173,0.67);
--moz-box-shadow: -4px 6px 9px 0px rgba(173,168,173,0.67);
-box-shadow: -4px 6px 9px 0px rgba(173,168,173,0.67);
+  -webkit-box-shadow: -4px 6px 9px 0px rgba(173, 168, 173, 0.67);
+  -moz-box-shadow: -4px 6px 9px 0px rgba(173, 168, 173, 0.67);
+  box-shadow: -4px 6px 9px 0px rgba(173, 168, 173, 0.67);
 }

@@ -32,3 +32,4 @@ export const selectActiveMovie = (movies, id) => {
     payload: moviesMapped,
   };
 };
+

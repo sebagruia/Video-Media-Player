@@ -1,10 +1,42 @@
-.video{
-    cursor:pointer;
-}
-/* video:hover{
-    border:1px solid red;
-} */
+.video-element {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-.activeClass{
-    border:10px solid red;
+}
+.video-box {
+  width:100px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.video {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.activeClass {
+  width: 110px;
+}
+.hidden {
+  display: none;
+}
+.activeHr {
+  display: initial;
+  align-self: flex-start;
+  margin: 10px 0 0 0;
+  width: 30%;
+  border: 0.1px solid orange;
+}
+
+.video-text{
+    width: 50%;
+    text-align: center;
+}
+
+.video-text h6{
+    opacity:0.8;
+    font-variant:small-caps;
 }

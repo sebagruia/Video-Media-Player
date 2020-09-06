@@ -29,12 +29,12 @@ const CustomController = ({
   id,
 }) => {
   let currentPlayedMovieList = [];
-  const shuffledMovies = shuffle(movies);
+  const shuffledMovies = shuffle(Object.values(movies));
 
   if (shuffleValue) {
     currentPlayedMovieList = [...shuffledMovies];
   } else {
-    currentPlayedMovieList = [...movies];
+    currentPlayedMovieList = [...Object.values(movies)];
   }
 
   const handleClickLoop = () => {
@@ -85,21 +85,29 @@ const CustomController = ({
         src={Reload}
         alt="reload icon"
         role="button"
-        className="small"
+        className="small reload"
       />
       <img
         onClick={handleClickPrevious}
+        className="big"
         src={Previous}
         alt="prevoius icon"
         role="button"
       />
       <img
         onClick={handleClickPlay}
+        className="big"
         src={!playValue ? Play : Pause}
         alt="play icon"
         role="button"
       />
-      <img onClick={handleClickNext} src={Next} alt="next icon" role="button" />
+      <img
+        onClick={handleClickNext}
+        className="big"
+        src={Next}
+        alt="next icon"
+        role="button"
+      />
     </div>
   );
 };

@@ -15,3 +15,11 @@
 .list >.video{
     margin:10px 0 10px 0;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+    border-radius: 50px;
+  }

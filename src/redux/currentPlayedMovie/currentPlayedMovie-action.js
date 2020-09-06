@@ -1,4 +1,5 @@
 import { selectActiveMovie } from "../../redux/movies/movie-action";
+import {scrollIntoView} from "../../utils";
 export const ADD_CURRENT_VIDEOLINK = "ADD_CURRENT_VIDEOLINK";
 export const TOGGLE_PLAY_VIDEO = "TOGGLE_PLAY_VIDEO";
 export const TOGGLE_LOOP_VIDEO = "TOGGLE_LOOP_VIDEO";
@@ -24,20 +25,19 @@ export const addNextVideoLink = (dispatch, movies, id) => {
       if (currentIndex < movies.length - 1) {
         nextIndex = currentIndex + 1;
         dispatch(addCurrentVideoId(movies[nextIndex].id));
-        movies[nextIndex].videoRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "nearest",
-        });
         dispatch(selectActiveMovie(movies, movies[nextIndex].id));
+        scrollIntoView(movies, nextIndex);
         return {
           type: ADD_NEXT_VIDEOLINK,
           payload: movies[nextIndex].src,
         };
       } else {
+        dispatch(addCurrentVideoId(movies[0].id));
+        dispatch(selectActiveMovie(movies, movies[0].id));
+        scrollIntoView(movies, 0);
         return {
           type: ADD_NEXT_VIDEOLINK,
-          payload: movies[movies.length - 1].src,
+          payload: movies[0].src,
         };
       }
     }
@@ -54,17 +54,19 @@ export const addPreviousVideoLink = (dispatch, movies, id) => {
         previousIndex = currentIndex - 1;
         dispatch(addCurrentVideoId(movies[previousIndex].id));
         dispatch(selectActiveMovie(movies, movies[previousIndex].id));
-        movies[previousIndex].videoRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "nearest",
-        });
+        scrollIntoView(movies, previousIndex);
         return {
           type: ADD_PREVIOUS_VIDEOLINK,
           payload: movies[previousIndex].src,
         };
       } else {
-        return { type: ADD_PREVIOUS_VIDEOLINK, payload: movies[0].src };
+        dispatch(addCurrentVideoId(movies[movies.length - 1].id));
+        dispatch(selectActiveMovie(movies, movies[movies.length - 1].id));
+        scrollIntoView(movies, movies.length - 1);
+        return {
+          type: ADD_PREVIOUS_VIDEOLINK,
+          payload: movies[movies.length - 1].src,
+        };
       }
     }
   }

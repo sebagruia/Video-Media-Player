@@ -7,23 +7,23 @@ import Movie6 from "./assets/movies/See.mp4";
 import Movie7 from "./assets/movies/flower.mp4";
 
 export const movies = {
-  PexelsVideos1572442: {
-    id: `PexelsVideos1572442`,
+  Car_with_baloons: {
+    id: `Car_with_baloons`,
     src: Movie1,
     active:"false",
   },
-  PexelsVideos2325178: {
-    id: `PexelsVideos2325178`,
+  Tea: {
+    id: `Tea`,
     src: Movie2,
     active:"false",
   },
-  PexelsVideos2675510: {
-    id: `PexelsVideos2675510`,
+  Surfing: {
+    id: `Surfing`,
     src: Movie3,
     active:"false",
   },
-  PexelsVideos2818546: {
-    id: `PexelsVideos2818546`,
+  City_view: {
+    id: `City_view`,
     src: Movie4,
     active:"false",
   },
