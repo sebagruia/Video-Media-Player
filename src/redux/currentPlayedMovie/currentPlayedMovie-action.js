@@ -1,5 +1,6 @@
-import {selectActiveMovie} from "../../redux/movies/movie-action";
+import { selectActiveMovie } from "../../redux/movies/movie-action";
 export const ADD_CURRENT_VIDEOLINK = "ADD_CURRENT_VIDEOLINK";
+export const TOGGLE_PLAY_VIDEO = "TOGGLE_PLAY_VIDEO";
 export const TOGGLE_LOOP_VIDEO = "TOGGLE_LOOP_VIDEO";
 export const TOGGLE_SHUFFLE = "TOGGLE_SHUFFLE";
 export const ADD_REF_TO_CURRENT_VIDEO = "ADD_REF_TO_CURRENT_VIDEO";
@@ -14,16 +15,16 @@ export const addCurrentVideoLink = (videoLink) => {
   };
 };
 
-export const addNextVideoLink = (dispatch, movies, id, refs) => {
+export const addNextVideoLink = (dispatch, movies, id) => {
+  dispatch(togglePlayVideo(true));
   let nextIndex = 0;
   for (let movie of movies) {
     if (movie.id === id) {
       let currentIndex = movies.indexOf(movie);
-      if (currentIndex < movies.length-1) {
+      if (currentIndex < movies.length - 1) {
         nextIndex = currentIndex + 1;
         dispatch(addCurrentVideoId(movies[nextIndex].id));
-        console.log(refs);
-        refs[nextIndex].current.scrollIntoView({
+        movies[nextIndex].videoRef.current.scrollIntoView({
           behavior: "smooth",
           block: "center",
           inline: "nearest",
@@ -34,13 +35,17 @@ export const addNextVideoLink = (dispatch, movies, id, refs) => {
           payload: movies[nextIndex].src,
         };
       } else {
-        return { type: ADD_NEXT_VIDEOLINK, payload: movies[movies.length-1].src };
+        return {
+          type: ADD_NEXT_VIDEOLINK,
+          payload: movies[movies.length - 1].src,
+        };
       }
     }
   }
 };
 
-export const addPreviousVideoLink = (dispatch, movies, id, refs) => {
+export const addPreviousVideoLink = (dispatch, movies, id) => {
+  dispatch(togglePlayVideo(true));
   let previousIndex = 0;
   for (let movie of movies) {
     if (movie.id === id) {
@@ -48,8 +53,8 @@ export const addPreviousVideoLink = (dispatch, movies, id, refs) => {
       if (currentIndex > 0) {
         previousIndex = currentIndex - 1;
         dispatch(addCurrentVideoId(movies[previousIndex].id));
-        dispatch(selectActiveMovie(movies,movies[previousIndex].id));
-        refs[previousIndex].current.scrollIntoView({
+        dispatch(selectActiveMovie(movies, movies[previousIndex].id));
+        movies[previousIndex].videoRef.current.scrollIntoView({
           behavior: "smooth",
           block: "center",
           inline: "nearest",
@@ -72,6 +77,12 @@ export const addCurrentVideoId = (id) => {
   };
 };
 
+export const togglePlayVideo = (value) => {
+  return {
+    type: TOGGLE_PLAY_VIDEO,
+    payload: value,
+  };
+};
 export const toggleLoopVideo = (value) => {
   return {
     type: TOGGLE_LOOP_VIDEO,

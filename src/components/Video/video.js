@@ -1,26 +1,35 @@
-import React, {useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./video.css";
 import { connect } from "react-redux";
 import {
   addCurrentVideoLink,
   addCurrentVideoId,
+  togglePlayVideo,
 } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
 import { selectActiveMovie } from "../../redux/movies/movie-action";
-import { addRefToVideoInList, getAllVideosRefs } from "../../redux/video/video-action";
+import { addRefKeyToEveryMovieObject} from "../../utils";
 
-
-const Video = ({ dispatch, movies, videoLink, id, active, allVideosRefs, refToVideo }) => {
+const Video = ({
+  dispatch,
+  movies,
+  videoLink,
+  id,
+  active,
+  refToVideo,
+ 
+}) => {
   const refToVideoInList = useRef(null);
 
-  useEffect(()=>{
-    dispatch(getAllVideosRefs(refToVideoInList))
-  },[dispatch]);
+  useEffect(() => {
+    addRefKeyToEveryMovieObject(id, refToVideoInList, movies);
+  });
 
   const handleClick = () => {
+    dispatch(togglePlayVideo(true));
     dispatch(addCurrentVideoLink(videoLink));
     dispatch(selectActiveMovie(movies, id));
     dispatch(addCurrentVideoId(id));
-    dispatch(addRefToVideoInList(refToVideoInList));
+
     refToVideoInList.current.scrollIntoView({
       behavior: "smooth",
       block: "center",
@@ -49,8 +58,8 @@ const Video = ({ dispatch, movies, videoLink, id, active, allVideosRefs, refToVi
 const mapStateToProps = (state) => {
   return {
     movies: state.moviesReducer.movies,
-    // allVideosRefs: state.videoReducer.allVideosRefs,
-    refToVideo:state.currentMovieReducer.refToVideo
+    refToVideo: state.currentMovieReducer.refToVideo,
+    playValue: state.currentMovieReducer.playValue,
   };
 };
 

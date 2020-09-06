@@ -5,8 +5,12 @@ import {
   toggleLoopVideo,
   toggleSuffle,
   addNextVideoLink,
-  addPreviousVideoLink
+  addPreviousVideoLink,
 } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
+import { shuffle, clickPlay } from "../../utils";
+import { addShuffledMovieList } from "../../redux/movies/movie-action";
+import Play from "../../assets/icons/play.png";
+import Pause from "../../assets/icons/pause.png";
 import Next from "../../assets/icons/next.png";
 import Loop from "../../assets/icons/loop.png";
 import LoopOrange from "../../assets/icons/loop-orange.png";
@@ -17,33 +21,51 @@ import Previous from "../../assets/icons/previous.png";
 
 const CustomController = ({
   dispatch,
+  playValue,
   loopValue,
   shuffleValue,
   refToVideo,
-  allVideosRefs,
   movies,
   id,
 }) => {
+  let currentPlayedMovieList = [];
+  const shuffledMovies = shuffle(movies);
+
+  if (shuffleValue) {
+    currentPlayedMovieList = [...shuffledMovies];
+  } else {
+    currentPlayedMovieList = [...movies];
+  }
+
   const handleClickLoop = () => {
     dispatch(toggleLoopVideo(loopValue));
   };
+
   const handleClickShuffle = () => {
     dispatch(toggleSuffle(shuffleValue));
+    dispatch(addShuffledMovieList(shuffledMovies));
   };
+
   const handleClickReload = () => {
     refToVideo.current.load();
   };
   const handleClickNext = () => {
-    dispatch(addNextVideoLink(dispatch,movies, id, allVideosRefs));
+    if (id !== "") {
+      dispatch(addNextVideoLink(dispatch, currentPlayedMovieList, id));
+    }
   };
+  const handleClickPlay = () => {
+    clickPlay(dispatch, id, playValue, refToVideo);
+  };
+
   const handleClickPrevious = () => {
-    dispatch(addPreviousVideoLink(dispatch,movies, id, allVideosRefs));
+    if (id !== "") {
+      dispatch(addPreviousVideoLink(dispatch, currentPlayedMovieList, id));
+    }
   };
 
   return (
     <div className="customController">
-      <img onClick={handleClickPrevious} src={Previous} alt="prevoius icon" role="button" />
-
       <img
         onClick={handleClickLoop}
         src={loopValue ? LoopOrange : Loop}
@@ -51,7 +73,6 @@ const CustomController = ({
         className="small"
         role="button"
       />
-
       <img
         onClick={handleClickShuffle}
         src={shuffleValue ? ShuffleOrange : Shuffle}
@@ -66,6 +87,18 @@ const CustomController = ({
         role="button"
         className="small"
       />
+      <img
+        onClick={handleClickPrevious}
+        src={Previous}
+        alt="prevoius icon"
+        role="button"
+      />
+      <img
+        onClick={handleClickPlay}
+        src={!playValue ? Play : Pause}
+        alt="play icon"
+        role="button"
+      />
       <img onClick={handleClickNext} src={Next} alt="next icon" role="button" />
     </div>
   );
@@ -73,10 +106,10 @@ const CustomController = ({
 
 const mapStateToProps = (state) => {
   return {
+    playValue: state.currentMovieReducer.playValue,
     loopValue: state.currentMovieReducer.loopValue,
     shuffleValue: state.currentMovieReducer.shuffleValue,
     refToVideo: state.currentMovieReducer.refToVideo,
-    allVideosRefs: state.videoReducer.allVideosRefs,
     movies: state.moviesReducer.movies,
     id: state.currentMovieReducer.id,
   };

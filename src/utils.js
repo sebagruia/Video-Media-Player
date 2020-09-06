@@ -1,9 +1,9 @@
 import {
   addCurrentVideoLink,
   addCurrentVideoId,
+  togglePlayVideo
 } from "./redux/currentPlayedMovie/currentPlayedMovie-action";
-import {selectActiveMovie} from "./redux/movies/movie-action";
-
+import { selectActiveMovie } from "./redux/movies/movie-action";
 
 const getRandomNumber = (min, max) =>
   Math.round(Math.random() * (max - min) + min);
@@ -28,30 +28,45 @@ export const shuffle = (array) => {
   return shuffledArray;
 };
 
-export const autoplayNext = (dispatch, allVideosRefs, movies, id) => {
-  for (let i = 0; i < allVideosRefs.length; i++) {
-    if (allVideosRefs[i].current.id === id) {
+export const autoplayNext = (dispatch, movies, id) => {
+  dispatch(togglePlayVideo(true));
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].id === id) {
       let j = i + 1;
-      if (j < allVideosRefs.length) {
-        dispatch(addCurrentVideoLink(allVideosRefs[j].current.currentSrc));
-        dispatch(addCurrentVideoId(allVideosRefs[j].current.id));
-        dispatch(selectActiveMovie(movies, allVideosRefs[j].current.id));
-        allVideosRefs[j].current.scrollIntoView({
+      if (j < movies.length) {
+        dispatch(addCurrentVideoLink(movies[j].src));
+        dispatch(addCurrentVideoId(movies[j].id));
+        dispatch(selectActiveMovie(movies, movies[j].id));
+        movies[j].videoRef.current.scrollIntoView({
           behavior: "smooth",
           block: "center",
           inline: "nearest",
         });
       } else {
+        dispatch(togglePlayVideo(false));
         return;
       }
     }
   }
 };
 
+export const addRefKeyToEveryMovieObject = (id, ref, movies) => {
+  const moviesArray = movies;
+  for (let i = 0; i < moviesArray.length; i++) {
+    if(moviesArray[i].id === id){
+      moviesArray[i].videoRef = ref;
+    }
+  }
+};
 
- // const refToVideoActive = refs.filter((ref) => ref.current.id === movie.id);
-      // refToVideoActive[0].current.scrollIntoView({
-      //   behavior: "smooth",
-      //   block: "center",
-      //   inline: "nearest",
-      // });
+export const clickPlay = (dispatch, id, playValue, refToVideo) => {
+  if (id !== "") {
+    if (playValue) {
+      refToVideo.current.pause();
+      dispatch(togglePlayVideo(!playValue));
+    } else {
+      refToVideo.current.play();
+      dispatch(togglePlayVideo(!playValue));
+    }
+  }
+}

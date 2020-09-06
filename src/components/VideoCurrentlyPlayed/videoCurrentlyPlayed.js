@@ -1,30 +1,44 @@
 import React, { useEffect, useRef } from "react";
 import "./videoCurrentlyPlayed.css";
 import { connect } from "react-redux";
-import { addRefToCurrentVideo } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
+import {addRefToCurrentVideo} from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
 import { autoplayNext } from "../../utils";
+import Poster from  "../../assets/img/poster992.jpg";
 
 const VideoCurrentlyPlayed = ({
   dispatch,
   currentVideoLink,
   loopValue,
+  shuffleValue,
+  shuffledMovies,
   movies,
   id,
-  allVideosRefs,
 }) => {
   const refToCurrentVideo = useRef(null);
+
   useEffect(() => {
     dispatch(addRefToCurrentVideo(refToCurrentVideo));
   }, [dispatch]);
 
+  const handleOnEnded = ()=>{
+    if(shuffleValue){
+      autoplayNext(dispatch, shuffledMovies, id)
+    }
+    else{
+      autoplayNext(dispatch,  movies, id)
+    }
+  }
+
+
   return (
     <video
-      onEnded={() => autoplayNext(dispatch, allVideosRefs, movies, id)}
+      onEnded={handleOnEnded}
       className="video"
       width="100%"
       height="auto"
       controls
       autoPlay
+      poster={Poster}
       key={currentVideoLink}
       loop={loopValue}
       ref={refToCurrentVideo}
@@ -38,8 +52,10 @@ const VideoCurrentlyPlayed = ({
 const mapStateToProps = (state) => {
   return {
     movies: state.moviesReducer.movies,
+    shuffledMovies: state.moviesReducer.shuffledMovies,
+    refToVideo: state.moviesReducer.refToVideo,
     id: state.currentMovieReducer.id,
-    allVideosRefs: state.videoReducer.allVideosRefs,
+    shuffleValue: state.currentMovieReducer.shuffleValue,
   };
 };
 

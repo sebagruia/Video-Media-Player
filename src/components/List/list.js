@@ -2,15 +2,12 @@ import React from "react";
 import "./list.css";
 import { connect } from "react-redux";
 import Video from "../Video/video";
-import { shuffle } from "../../utils";
 
-const List = ({ movies, shuffleValue }) => {
-
-  const shuffledList = shuffle(Object.values(movies));
+const List = ({ movies, shuffleValue, shuffledMovies }) => {
   return (
     <div className="list">
       {shuffleValue
-        ? shuffledList.map((movie) => (
+        ? shuffledMovies.map((movie) => (
             <Video
               key={movie.id}
               videoLink={movie.src}
@@ -26,6 +23,7 @@ const List = ({ movies, shuffleValue }) => {
               active={movie.active}
             />
           ))}
+
     </div>
   );
 };
@@ -34,7 +32,8 @@ const mapStateToProps = (state) => {
   return {
     movies: state.moviesReducer.movies,
     shuffleValue: state.currentMovieReducer.shuffleValue,
+    shuffledMovies: state.moviesReducer.shuffledMovies,
+    
   };
 };
-
 export default connect(mapStateToProps)(List);
