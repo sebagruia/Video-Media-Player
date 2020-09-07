@@ -1,6 +1,7 @@
 # Video Media Player
 
 This a Web Video Media Player build using ReactJs and Redux
+ [Link To Live Project](https://sebagruia.github.io/Video-Media-Player/)
 
 ## Project Status
 
