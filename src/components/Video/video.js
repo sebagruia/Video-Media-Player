@@ -9,15 +9,15 @@ import {
 import { selectActiveMovie } from "../../redux/movies/movie-action";
 import { addRefKeyToEveryMovieObject } from "../../utils";
 
-const Video = ({ dispatch, movies, videoLink, id, active }) => {
+const Video = ({ dispatch, movies, videoLink, id, active, refToVideo, playValue }) => {
   const refToVideoInList = useRef(null);
+
 
   useEffect(() => {
     addRefKeyToEveryMovieObject(id, refToVideoInList, movies);
   });
 
   const handleClick = () => {
-    dispatch(togglePlayVideo(true));
     dispatch(addCurrentVideoLink(videoLink));
     dispatch(selectActiveMovie(movies, id));
     dispatch(addCurrentVideoId(id));
@@ -26,6 +26,14 @@ const Video = ({ dispatch, movies, videoLink, id, active }) => {
       block: "center",
       inline: "nearest",
     });
+    if(playValue){
+      refToVideo.current.pause();
+      dispatch(togglePlayVideo(false));
+    }
+    else{
+      refToVideo.current.play();
+      dispatch(togglePlayVideo(true));
+    }
   };
 
   return (
@@ -58,6 +66,7 @@ const mapStateToProps = (state) => {
   return {
     movies: state.moviesReducer.movies,
     playValue: state.currentMovieReducer.playValue,
+    refToVideo:state.currentMovieReducer.refToVideo,
   };
 };
 
