@@ -1,30 +1,23 @@
 {
   "files": {
     "main.css": "/Video-Media-Player/static/css/main.4ae0ece1.chunk.css",
-    "main.js": "/Video-Media-Player/static/js/main.fcb430b4.chunk.js",
-    "main.js.map": "/Video-Media-Player/static/js/main.fcb430b4.chunk.js.map",
+    "main.js": "/Video-Media-Player/static/js/main.062c26bd.chunk.js",
+    "main.js.map": "/Video-Media-Player/static/js/main.062c26bd.chunk.js.map",
     "runtime-main.js": "/Video-Media-Player/static/js/runtime-main.a91d4da4.js",
     "runtime-main.js.map": "/Video-Media-Player/static/js/runtime-main.a91d4da4.js.map",
-    "static/js/2.c59f4495.chunk.js": "/Video-Media-Player/static/js/2.c59f4495.chunk.js",
-    "static/js/2.c59f4495.chunk.js.map": "/Video-Media-Player/static/js/2.c59f4495.chunk.js.map",
+    "static/js/2.9887838d.chunk.js": "/Video-Media-Player/static/js/2.9887838d.chunk.js",
+    "static/js/2.9887838d.chunk.js.map": "/Video-Media-Player/static/js/2.9887838d.chunk.js.map",
     "index.html": "/Video-Media-Player/index.html",
-    "precache-manifest.c6a560562c6053162b1893056636adb9.js": "/Video-Media-Player/precache-manifest.c6a560562c6053162b1893056636adb9.js",
+    "precache-manifest.3ca9af4817a7f1efe361f1cc97e93156.js": "/Video-Media-Player/precache-manifest.3ca9af4817a7f1efe361f1cc97e93156.js",
     "service-worker.js": "/Video-Media-Player/service-worker.js",
     "static/css/main.4ae0ece1.chunk.css.map": "/Video-Media-Player/static/css/main.4ae0ece1.chunk.css.map",
-    "static/js/2.c59f4495.chunk.js.LICENSE.txt": "/Video-Media-Player/static/js/2.c59f4495.chunk.js.LICENSE.txt",
-    "static/media/Counting Money.mp4": "/Video-Media-Player/static/media/Counting Money.d220b8a8.mp4",
-    "static/media/PexelsVideos1572442.mp4": "/Video-Media-Player/static/media/PexelsVideos1572442.04bf4c9a.mp4",
-    "static/media/PexelsVideos2325178.mp4": "/Video-Media-Player/static/media/PexelsVideos2325178.5e4bc7d1.mp4",
-    "static/media/PexelsVideos2675510.mp4": "/Video-Media-Player/static/media/PexelsVideos2675510.2176d454.mp4",
-    "static/media/PexelsVideos2818546.mp4": "/Video-Media-Player/static/media/PexelsVideos2818546.d6fff52c.mp4",
-    "static/media/See.mp4": "/Video-Media-Player/static/media/See.84add43c.mp4",
-    "static/media/flower.mp4": "/Video-Media-Player/static/media/flower.25c37cf7.mp4",
+    "static/js/2.9887838d.chunk.js.LICENSE.txt": "/Video-Media-Player/static/js/2.9887838d.chunk.js.LICENSE.txt",
     "static/media/poster992.jpg": "/Video-Media-Player/static/media/poster992.ffbeba4b.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a91d4da4.js",
-    "static/js/2.c59f4495.chunk.js",
+    "static/js/2.9887838d.chunk.js",
     "static/css/main.4ae0ece1.chunk.css",
-    "static/js/main.fcb430b4.chunk.js"
+    "static/js/main.062c26bd.chunk.js"
   ]
 }
