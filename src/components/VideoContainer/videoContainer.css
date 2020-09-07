@@ -1,5 +1,14 @@
 .videoContainer{
     display:flex;
     width:70%;
-    height:100%;
+    height: 100%;
+}
+
+/* Media Query */
+
+@media screen and (max-width:991px){
+    .videoContainer{
+        width:100%;
+        height: 100%;
+    }
 }

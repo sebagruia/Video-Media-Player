@@ -11,3 +11,12 @@
   -moz-box-shadow: -4px 6px 9px 0px rgba(173, 168, 173, 0.67);
   box-shadow: -4px 6px 9px 0px rgba(173, 168, 173, 0.67);
 }
+
+/* Media Query */
+@media screen and (max-width:991px){
+  .app-container{
+    flex-direction:column;
+    width: 70%;
+    height: 70%;
+  }
+}

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import "./videoCurrentlyPlayed.css";
 import { connect } from "react-redux";
-import {addRefToCurrentVideo} from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
+import { addRefToCurrentVideo } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
 import { autoplayNext } from "../../utils";
-import Poster from  "../../assets/img/poster992.jpg";
+import Poster from "../../assets/img/enter.jpg";
 
 const VideoCurrentlyPlayed = ({
   dispatch,
@@ -20,15 +20,13 @@ const VideoCurrentlyPlayed = ({
     dispatch(addRefToCurrentVideo(refToCurrentVideo));
   }, [dispatch]);
 
-  const handleOnEnded = ()=>{
-    if(shuffleValue){
-      autoplayNext(dispatch, shuffledMovies, id)
+  const handleOnEnded = () => {
+    if (shuffleValue) {
+      autoplayNext(dispatch, shuffledMovies, id);
+    } else {
+      autoplayNext(dispatch, movies, id);
     }
-    else{
-      autoplayNext(dispatch,  movies, id)
-    }
-  }
-
+  };
 
   return (
     <video
@@ -38,7 +36,7 @@ const VideoCurrentlyPlayed = ({
       height="auto"
       controls
       autoPlay
-      poster={Poster}
+      poster={!id ? Poster : null}
       key={currentVideoLink}
       loop={loopValue}
       ref={refToCurrentVideo}

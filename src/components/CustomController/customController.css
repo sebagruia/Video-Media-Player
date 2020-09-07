@@ -24,3 +24,31 @@
 .reload:active{
     transform: rotate(60deg);
 }
+
+
+@media screen and (max-width:991px){
+    .customController {
+        height: 100px;
+        justify-content: space-evenly;
+    }
+}
+@media screen and (max-width:576px){
+    .customController img{
+        width:20px;
+        height:20px;
+        margin-right: 15px;
+        cursor:pointer;
+    }
+    .customController img:first-child{
+        margin-left: 10px;
+    }
+    .small{
+        width:16px!important;
+        height:16px!important;
+    }
+
+    .big:active{
+        width:19px!important;
+        height:19px!important;
+    }
+}

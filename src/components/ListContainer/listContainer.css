@@ -6,3 +6,16 @@
     justify-content: space-between;
     background-color: #fff;
 }
+
+/* Media Query */
+@media screen and (max-width: 991px) {
+    .listContainer {
+      width: 100%;
+      height: 250px;
+    }
+  }
+  @media screen and (max-width:576px){
+    .listContainer {
+      height: 220px;
+  }
+  }
