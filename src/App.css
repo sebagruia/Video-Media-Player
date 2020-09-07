@@ -20,3 +20,10 @@
     height: 70%;
   }
 }
+@media screen and (max-width:576px){
+  .app-container{
+    flex-direction:column;
+    width: 90%;
+    height: 90%;
+  }
+}
