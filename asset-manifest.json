@@ -1,23 +1,30 @@
 {
   "files": {
     "main.css": "/Video-Media-Player/static/css/main.797c0044.chunk.css",
-    "main.js": "/Video-Media-Player/static/js/main.8e788b4e.chunk.js",
-    "main.js.map": "/Video-Media-Player/static/js/main.8e788b4e.chunk.js.map",
+    "main.js": "/Video-Media-Player/static/js/main.a62f876e.chunk.js",
+    "main.js.map": "/Video-Media-Player/static/js/main.a62f876e.chunk.js.map",
     "runtime-main.js": "/Video-Media-Player/static/js/runtime-main.a91d4da4.js",
     "runtime-main.js.map": "/Video-Media-Player/static/js/runtime-main.a91d4da4.js.map",
-    "static/js/2.a7b5a8bf.chunk.js": "/Video-Media-Player/static/js/2.a7b5a8bf.chunk.js",
-    "static/js/2.a7b5a8bf.chunk.js.map": "/Video-Media-Player/static/js/2.a7b5a8bf.chunk.js.map",
+    "static/js/2.c7a42cf7.chunk.js": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js",
+    "static/js/2.c7a42cf7.chunk.js.map": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js.map",
     "index.html": "/Video-Media-Player/index.html",
-    "precache-manifest.b7558d15f16b851cd7e898cc4bc33057.js": "/Video-Media-Player/precache-manifest.b7558d15f16b851cd7e898cc4bc33057.js",
+    "precache-manifest.0b6191e96b3b373c20d71239710f981e.js": "/Video-Media-Player/precache-manifest.0b6191e96b3b373c20d71239710f981e.js",
     "service-worker.js": "/Video-Media-Player/service-worker.js",
     "static/css/main.797c0044.chunk.css.map": "/Video-Media-Player/static/css/main.797c0044.chunk.css.map",
-    "static/js/2.a7b5a8bf.chunk.js.LICENSE.txt": "/Video-Media-Player/static/js/2.a7b5a8bf.chunk.js.LICENSE.txt",
+    "static/js/2.c7a42cf7.chunk.js.LICENSE.txt": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js.LICENSE.txt",
+    "static/media/Baloane.mp4": "/Video-Media-Player/static/media/Baloane.decbeb22.mp4",
+    "static/media/Barca.mp4": "/Video-Media-Player/static/media/Barca.db309ef3.mp4",
+    "static/media/Cafea.mp4": "/Video-Media-Player/static/media/Cafea.d253d8d8.mp4",
+    "static/media/Lumini.mp4": "/Video-Media-Player/static/media/Lumini.d28428cb.mp4",
+    "static/media/Party.mp4": "/Video-Media-Player/static/media/Party.dddbbdb8.mp4",
+    "static/media/Ploaie.mp4": "/Video-Media-Player/static/media/Ploaie.cd3de1ca.mp4",
+    "static/media/Valuri.mp4": "/Video-Media-Player/static/media/Valuri.6de3f568.mp4",
     "static/media/enter.jpg": "/Video-Media-Player/static/media/enter.c6eaddad.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a91d4da4.js",
-    "static/js/2.a7b5a8bf.chunk.js",
+    "static/js/2.c7a42cf7.chunk.js",
     "static/css/main.797c0044.chunk.css",
-    "static/js/main.8e788b4e.chunk.js"
+    "static/js/main.a62f876e.chunk.js"
   ]
 }
