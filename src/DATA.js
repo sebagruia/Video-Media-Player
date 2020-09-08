@@ -8,37 +8,37 @@ import Movie7 from "../src/assets/movies/Valuri.mp4";
 
 export const movies = {
   Car_with_baloons: {
-    id: `Car_with_baloons`,
+    id: `Baloane`,
     src: Movie1,
     active:"false",
   },
   Tea: {
-    id: `Tea`,
+    id: `Barca`,
     src: Movie2,
     active:"false",
   },
   Surfing: {
-    id: `Surfing`,
+    id: `Cafea`,
     src: Movie3,
     active:"false",
   },
   City_view: {
-    id: `City_view`,
+    id: `Lumini`,
     src: Movie4,
     active:"false",
   },
   Counting_Money: {
-    id: `Counting_Money`,
+    id: `Party`,
     src: Movie5,
     active:"false",
   },
   See: {
-    id: `See`,
+    id: `Ploaie`,
     src: Movie6,
     active:"false",
   },
   Flower: {
-    id: `Flower`,
+    id: `Valuri`,
     src: Movie7,
     active:"false",
   },
