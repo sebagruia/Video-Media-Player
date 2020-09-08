@@ -1,38 +1,45 @@
+import Movie1 from "../src/assets/movies/Baloane.mp4";
+import Movie2 from "../src/assets/movies/Barca.mp4";
+import Movie3 from "../src/assets/movies/Cafea.mp4";
+import Movie4 from "../src/assets/movies/Lumini.mp4";
+import Movie5 from "../src/assets/movies/Party.mp4";
+import Movie6 from "../src/assets/movies/Ploaie.mp4";
+import Movie7 from "../src/assets/movies/Valuri.mp4";
 
 export const movies = {
   Car_with_baloons: {
     id: `Car_with_baloons`,
-    src: "https://firebasestorage.googleapis.com/v0/b/video-media-player.appspot.com/o/movies%2FCar%20with%20Baloons.mp4?alt=media&token=1e6e04b5-2a44-41d0-91d1-fd8b5e42ff6d",
+    src: Movie1,
     active:"false",
   },
   Tea: {
     id: `Tea`,
-    src: "https://firebasestorage.googleapis.com/v0/b/video-media-player.appspot.com/o/movies%2FTea.mp4?alt=media&token=5f57c098-4384-4f8b-bb55-e5995da1a1eb",
+    src: Movie2,
     active:"false",
   },
   Surfing: {
     id: `Surfing`,
-    src: "https://firebasestorage.googleapis.com/v0/b/video-media-player.appspot.com/o/movies%2FSurfing.mp4?alt=media&token=0cdc67a8-73be-47a8-95c1-81dee05dbe32",
+    src: Movie3,
     active:"false",
   },
   City_view: {
     id: `City_view`,
-    src: "https://firebasestorage.googleapis.com/v0/b/video-media-player.appspot.com/o/movies%2FCity%20View.mp4?alt=media&token=646d803a-4b93-46fe-b7ad-1be65fea5c80",
+    src: Movie4,
     active:"false",
   },
   Counting_Money: {
     id: `Counting_Money`,
-    src: "https://firebasestorage.googleapis.com/v0/b/video-media-player.appspot.com/o/movies%2FCounting%20Money.mp4?alt=media&token=71a1e6de-fef6-4cee-9768-e2e5292ca9ea",
+    src: Movie5,
     active:"false",
   },
   See: {
     id: `See`,
-    src: "https://firebasestorage.googleapis.com/v0/b/video-media-player.appspot.com/o/movies%2FSee.mp4?alt=media&token=c1c473c6-a916-4b3f-8b61-a851216b9cf5",
+    src: Movie6,
     active:"false",
   },
   Flower: {
     id: `Flower`,
-    src: "https://firebasestorage.googleapis.com/v0/b/video-media-player.appspot.com/o/movies%2Fflower.mp4?alt=media&token=552e7649-b725-45ca-9054-29699eb88b88",
+    src: Movie7,
     active:"false",
   },
 };
