@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Video-Media-Player/static/css/main.797c0044.chunk.css",
-    "main.js": "/Video-Media-Player/static/js/main.a62f876e.chunk.js",
-    "main.js.map": "/Video-Media-Player/static/js/main.a62f876e.chunk.js.map",
+    "main.js": "/Video-Media-Player/static/js/main.69d8529a.chunk.js",
+    "main.js.map": "/Video-Media-Player/static/js/main.69d8529a.chunk.js.map",
     "runtime-main.js": "/Video-Media-Player/static/js/runtime-main.a91d4da4.js",
     "runtime-main.js.map": "/Video-Media-Player/static/js/runtime-main.a91d4da4.js.map",
     "static/js/2.c7a42cf7.chunk.js": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js",
     "static/js/2.c7a42cf7.chunk.js.map": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js.map",
     "index.html": "/Video-Media-Player/index.html",
-    "precache-manifest.0b6191e96b3b373c20d71239710f981e.js": "/Video-Media-Player/precache-manifest.0b6191e96b3b373c20d71239710f981e.js",
+    "precache-manifest.561bc2a49449476e948ca0a607acd094.js": "/Video-Media-Player/precache-manifest.561bc2a49449476e948ca0a607acd094.js",
     "service-worker.js": "/Video-Media-Player/service-worker.js",
     "static/css/main.797c0044.chunk.css.map": "/Video-Media-Player/static/css/main.797c0044.chunk.css.map",
     "static/js/2.c7a42cf7.chunk.js.LICENSE.txt": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js.LICENSE.txt",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.a91d4da4.js",
     "static/js/2.c7a42cf7.chunk.js",
     "static/css/main.797c0044.chunk.css",
-    "static/js/main.a62f876e.chunk.js"
+    "static/js/main.69d8529a.chunk.js"
   ]
 }
