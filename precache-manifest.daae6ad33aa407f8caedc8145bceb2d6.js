@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d7abcf93a5f28dd842143c22349257e9",
+    "revision": "6faf1397af50530dac02ad69380a3c86",
     "url": "/Video-Media-Player/index.html"
   },
   {
-    "revision": "ab6e6ee2795493303d38",
-    "url": "/Video-Media-Player/static/css/main.797c0044.chunk.css"
+    "revision": "2b7726b9849cc0574d0b",
+    "url": "/Video-Media-Player/static/css/main.f27750ed.chunk.css"
   },
   {
-    "revision": "e97251410eda96a4875c",
-    "url": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js"
+    "revision": "840cc4d119c0d863d9be",
+    "url": "/Video-Media-Player/static/js/2.fbd7b246.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/Video-Media-Player/static/js/2.c7a42cf7.chunk.js.LICENSE.txt"
+    "url": "/Video-Media-Player/static/js/2.fbd7b246.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ab6e6ee2795493303d38",
-    "url": "/Video-Media-Player/static/js/main.69d8529a.chunk.js"
+    "revision": "2b7726b9849cc0574d0b",
+    "url": "/Video-Media-Player/static/js/main.eb06e6ea.chunk.js"
   },
   {
     "revision": "83e17f3a8c3b538e7959",
