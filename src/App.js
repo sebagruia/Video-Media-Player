@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import { connect } from "react-redux";
-import { getMoviesAction } from "./redux/movies/movie-action";
-import { movies } from "./DATA";
 import VideoContainer from "./components/VideoContainer/videoContainer";
 import ListContainer from "./components/ListContainer/listContainer";
 
@@ -17,10 +14,5 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getMovies: () => dispatch(getMoviesAction(movies)),
-  };
-};
 
-export default connect(null, mapDispatchToProps)(App);
+export default App;
