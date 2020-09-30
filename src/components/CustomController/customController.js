@@ -18,6 +18,7 @@ import Shuffle from "../../assets/icons/shuffle.png";
 import ShuffleOrange from "../../assets/icons/shuffle-orange.png";
 import Reload from "../../assets/icons/reload.png";
 import Previous from "../../assets/icons/previous.png";
+import AddMediaButton from "../AddMediaButton/addMediaButton";
 
 const CustomController = ({
   dispatch,
@@ -28,6 +29,7 @@ const CustomController = ({
   movies,
   id,
 }) => {
+
   let currentPlayedMovieList = [];
   const shuffledMovies = shuffle(Object.values(movies));
 
@@ -64,8 +66,10 @@ const CustomController = ({
     }
   };
 
+
   return (
     <div className="customController">
+      <AddMediaButton />
       <img
         onClick={handleClickLoop}
         src={loopValue ? LoopOrange : Loop}
@@ -108,6 +112,8 @@ const CustomController = ({
         alt="next icon"
         role="button"
       />
+      
+    
     </div>
   );
 };

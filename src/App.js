@@ -7,10 +7,6 @@ import VideoContainer from "./components/VideoContainer/videoContainer";
 import ListContainer from "./components/ListContainer/listContainer";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getMovies();
-  }
-
   render() {
     return (
       <div className="app-container">
