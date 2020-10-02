@@ -17,7 +17,6 @@ export const addShuffledMovieList = (movies) => {
 };
 
 export const togglePlayVideo = (movies, id) => {
-  console.log(movies);
   const updatedMoviesObj = { ...movies };
   for (let movie in updatedMoviesObj) {
     if (updatedMoviesObj[movie].id === id) {

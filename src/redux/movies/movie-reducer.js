@@ -6,8 +6,7 @@ import {
 } from "./movie-action";
 
 const initialState = {
-  movies:{},
-  shuffledMovies:[]
+  movies:{}
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -20,7 +19,7 @@ export const moviesReducer = (state = initialState, action) => {
     case ADD_SHUFFLED_MOVIE_LIST:
       return {
         ...state,
-        shuffledMovies: {...action.payload},
+        movies: {...action.payload},
       };
     case SELECT_ACTIVE_MOVIE:
       return {

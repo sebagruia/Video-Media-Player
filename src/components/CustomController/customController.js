@@ -28,20 +28,13 @@ const CustomController = ({
   movies,
   id,
 }) => {
-  let currentPlayedMovieList = {};
-  const shuffledMovies = shuffle(movies);
-
-  if (shuffleValue) {
-    currentPlayedMovieList = { ...shuffledMovies };
-  } else {
-    currentPlayedMovieList = { ...movies };
-  }
 
   const handleClickLoop = () => {
     dispatch(toggleLoopVideo(loopValue));
   };
 
   const handleClickShuffle = () => {
+    const shuffledMovies = shuffle(movies);
     dispatch(toggleSuffle(shuffleValue));
     dispatch(addShuffledMovieList(shuffledMovies));
   };
@@ -49,9 +42,10 @@ const CustomController = ({
   const handleClickReload = () => {
     refToVideo.current.load();
   };
+
   const handleClickNext = () => {
     if (id !== "") {
-      dispatch(addNextVideoLink(dispatch, currentPlayedMovieList, id));
+      dispatch(addNextVideoLink(dispatch, movies, id));
     }
   };
   const handleClickPlay = () => {
@@ -59,13 +53,14 @@ const CustomController = ({
       return;
     }
     let playStatus = movies[id].playStatus;
-    clickPlay(dispatch, id, movies, playStatus, refToVideo);
     scrollIntoViewFunction(movies,id,"center");
+    clickPlay(dispatch, id, movies, playStatus, refToVideo);
+    
   };
 
   const handleClickPrevious = () => {
     if (id !== "") {
-      dispatch(addPreviousVideoLink(dispatch, currentPlayedMovieList, id));
+      dispatch(addPreviousVideoLink(dispatch, movies, id));
     }
   };
 

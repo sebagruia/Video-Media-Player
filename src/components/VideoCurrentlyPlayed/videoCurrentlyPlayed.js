@@ -2,15 +2,13 @@ import React, { useEffect, useRef } from "react";
 import "./videoCurrentlyPlayed.css";
 import { connect } from "react-redux";
 import { addRefToCurrentVideo } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
-import { autoplayNext } from "../../utils";
+import { autoplayNext, scrollIntoViewFunction } from "../../utils";
 import Poster from "../../assets/img/enter.jpg";
 
 const VideoCurrentlyPlayed = ({
   dispatch,
   currentVideoLink,
   loopValue,
-  shuffleValue,
-  shuffledMovies,
   movies,
   id,
 }) => {
@@ -21,11 +19,8 @@ const VideoCurrentlyPlayed = ({
   }, [dispatch]);
 
   const handleOnEnded = () => {
-    if (shuffleValue) {
-      autoplayNext(dispatch, shuffledMovies, id);
-    } else {
       autoplayNext(dispatch, movies, id);
-    }
+      scrollIntoViewFunction(movies,id,"center");
   };
   
   return (
@@ -50,10 +45,8 @@ const VideoCurrentlyPlayed = ({
 const mapStateToProps = (state) => {
   return {
     movies: state.moviesReducer.movies,
-    shuffledMovies: state.moviesReducer.shuffledMovies,
     refToVideo: state.moviesReducer.refToVideo,
     id: state.currentMovieReducer.id,
-    shuffleValue: state.currentMovieReducer.shuffleValue,
   };
 };
 
