@@ -1,15 +1,18 @@
 import {
   addCurrentVideoLink,
   addCurrentVideoId,
-  togglePlayVideo
 } from "./redux/currentPlayedMovie/currentPlayedMovie-action";
+import {togglePlayVideo} from "./redux/movies/movie-action";
 import { selectActiveMovie } from "./redux/movies/movie-action";
 
 const getRandomNumber = (min, max) =>
   Math.round(Math.random() * (max - min) + min);
 
-export const shuffle = (array) => {
+
+export const shuffle = (object) => {
+  const array = [...Object.values(object)];
   const newArray = [];
+  const movies = {};
 
   for (let i = 0; i < array.length; i++) {
     let randomNumber = getRandomNumber(array.length - 1, 0);
@@ -25,25 +28,28 @@ export const shuffle = (array) => {
   }
   const shuffledArray = newArray.map((element) => array[element]);
 
-  return shuffledArray;
+  for (let object of shuffledArray) {
+    movies[object.id] = object;
+  }
+
+  return movies;
 };
 
+
 export const autoplayNext = (dispatch, movies, id) => {
-  dispatch(togglePlayVideo(true));
-  for (let i = 0; i < movies.length; i++) {
-    if (movies[i].id === id) {
+  const moviesArray = Object.values(movies);
+  
+  for (let i = 0; i < moviesArray.length; i++) {
+    if (moviesArray[i].id === id) {
       let j = i + 1;
-      if (j < movies.length) {
-        dispatch(addCurrentVideoLink(movies[j].src));
-        dispatch(addCurrentVideoId(movies[j].id));
-        dispatch(selectActiveMovie(movies, movies[j].id));
-        movies[j].videoRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "nearest",
-        });
+      if (j < moviesArray.length) {
+        dispatch(togglePlayVideo(movies,moviesArray[j].id));
+        dispatch(addCurrentVideoLink(moviesArray[j].src));
+        dispatch(addCurrentVideoId(moviesArray[j].id));
+        dispatch(selectActiveMovie(movies, moviesArray[j].id));
+        scrollIntoViewFunction(movies,id,"start");
       } else {
-        dispatch(togglePlayVideo(false));
+        dispatch(togglePlayVideo(movies,id));
         return;
       }
     }
@@ -59,22 +65,22 @@ export const addRefKeyToEveryMovieObject = (id, ref, movies) => {
   }
 };
 
-export const clickPlay = (dispatch, id, playValue, refToVideo) => {
+export const clickPlay = (dispatch, id, movies, playStatus, refToVideo) => {
   if (id !== "") {
-    if (playValue) {
+    if (playStatus) {
       refToVideo.current.pause();
-      dispatch(togglePlayVideo(!playValue));
+      dispatch(togglePlayVideo(movies, id));
     } else {
-      refToVideo.current.play();
-      dispatch(togglePlayVideo(!playValue));
+      refToVideo.current.load();
+      dispatch(togglePlayVideo(movies, id));
     }
   }
 }
 
-export const scrollIntoView = (movies,index)=>{
-  movies[index].videoRef.current.scrollIntoView({
+export const scrollIntoViewFunction = (movies,id, position)=>{
+  movies[id].videoRef.current.scrollIntoView({
     behavior: "smooth",
-    block: "center",
+    block: position,
     inline: "nearest",
   });
 }

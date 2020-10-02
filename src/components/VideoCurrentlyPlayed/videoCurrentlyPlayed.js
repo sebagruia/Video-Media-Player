@@ -27,7 +27,7 @@ const VideoCurrentlyPlayed = ({
       autoplayNext(dispatch, movies, id);
     }
   };
-
+  
   return (
     <video
       onEnded={handleOnEnded}

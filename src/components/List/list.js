@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import Video from "../Video/video";
 
 const List = ({ movies, shuffleValue, shuffledMovies }) => {
+  const shuffleMoviesLength = Object.values(shuffledMovies).length;
   return (
     <div className="list">
-      {shuffleValue
-        ? shuffledMovies.map((movie) => (
+      {shuffleValue && shuffleMoviesLength > 0
+        ? Object.values(shuffledMovies).map((movie) => (
             <Video
-              key={movie.id}
+              key={`${movie.id}${new Date().getTime()}`}
               videoLink={movie.src}
               id={movie.id}
               active={movie.active}
@@ -17,10 +18,11 @@ const List = ({ movies, shuffleValue, shuffledMovies }) => {
           ))
         : Object.values(movies).map((movie) => (
             <Video
-              key={movie.id}
+              key={`${movie.id}${new Date().getTime()}`}
               videoLink={movie.src}
               id={movie.id}
               active={movie.active}
+              playStatus={movie.playStatus}
             />
           ))}
 

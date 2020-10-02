@@ -1,6 +1,7 @@
 export const GET_MOVIES = "GET_MOVIES";
 export const SELECT_ACTIVE_MOVIE = "SELECT_ACTIVE_MOVIE";
 export const ADD_SHUFFLED_MOVIE_LIST = "ADD_SHUFFLED_MOVIE_LIST";
+export const TOGGLE_PLAY_VIDEO = "TOGGLE_PLAY_VIDEO";
 
 export const getMoviesAction = (movies) => {
   return {
@@ -15,21 +16,33 @@ export const addShuffledMovieList = (movies) => {
   };
 };
 
-
-export const selectActiveMovie = (movies, id) => {
-  const moviesMapped = Object.values(movies).map((movie) => {
-    if (movie.id === id) {
-      movie.active = "true";
-      return movie;
-    } 
-    else {
-      movie.active = "false";
-      return movie;
+export const togglePlayVideo = (movies, id) => {
+  console.log(movies);
+  const updatedMoviesObj = { ...movies };
+  for (let movie in updatedMoviesObj) {
+    if (updatedMoviesObj[movie].id === id) {
+      updatedMoviesObj[movie].playStatus = !updatedMoviesObj[movie].playStatus;
+    } else {
+      updatedMoviesObj[movie].playStatus = false;
     }
-  });
+  }
   return {
-    type: SELECT_ACTIVE_MOVIE,
-    payload: moviesMapped,
+    type: TOGGLE_PLAY_VIDEO,
+    payload: updatedMoviesObj,
   };
 };
 
+export const selectActiveMovie = (movies, id) => {
+  const updatedMoviesObj = { ...movies };
+  for (let movie in updatedMoviesObj) {
+    if (updatedMoviesObj[movie].id === id) {
+      updatedMoviesObj[movie].active = "true";
+    } else {
+      updatedMoviesObj[movie].active = "false";
+    }
+  }
+  return {
+    type: SELECT_ACTIVE_MOVIE,
+    payload: updatedMoviesObj,
+  };
+};

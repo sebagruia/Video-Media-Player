@@ -1,7 +1,6 @@
-import { selectActiveMovie } from "../../redux/movies/movie-action";
-import {scrollIntoView} from "../../utils";
+import { selectActiveMovie, togglePlayVideo } from "../../redux/movies/movie-action";
+import {scrollIntoViewFunction} from "../../utils";
 export const ADD_CURRENT_VIDEOLINK = "ADD_CURRENT_VIDEOLINK";
-export const TOGGLE_PLAY_VIDEO = "TOGGLE_PLAY_VIDEO";
 export const TOGGLE_LOOP_VIDEO = "TOGGLE_LOOP_VIDEO";
 export const TOGGLE_SHUFFLE = "TOGGLE_SHUFFLE";
 export const ADD_REF_TO_CURRENT_VIDEO = "ADD_REF_TO_CURRENT_VIDEO";
@@ -17,27 +16,32 @@ export const addCurrentVideoLink = (videoLink) => {
 };
 
 export const addNextVideoLink = (dispatch, movies, id) => {
-  dispatch(togglePlayVideo(true));
+  const moviesArray = [...Object.values(movies)];
   let nextIndex = 0;
-  for (let movie of movies) {
+  
+  for (let movie of moviesArray) {
     if (movie.id === id) {
-      let currentIndex = movies.indexOf(movie);
-      if (currentIndex < movies.length - 1) {
+      let currentIndex = moviesArray.indexOf(movie);
+      if (currentIndex < moviesArray.length - 1) {
         nextIndex = currentIndex + 1;
-        dispatch(addCurrentVideoId(movies[nextIndex].id));
-        dispatch(selectActiveMovie(movies, movies[nextIndex].id));
-        scrollIntoView(movies, nextIndex);
+        const nextId = moviesArray[nextIndex].id;
+        dispatch(togglePlayVideo(movies, nextId));
+        dispatch(addCurrentVideoId(nextId));
+        dispatch(selectActiveMovie(movies, nextId));
+        scrollIntoViewFunction(moviesArray, nextIndex, "end");
         return {
           type: ADD_NEXT_VIDEOLINK,
-          payload: movies[nextIndex].src,
+          payload: moviesArray[nextIndex].src,
         };
       } else {
-        dispatch(addCurrentVideoId(movies[0].id));
-        dispatch(selectActiveMovie(movies, movies[0].id));
-        scrollIntoView(movies, 0);
+        const loopId = moviesArray[0].id;
+        dispatch(togglePlayVideo(movies, loopId));
+        dispatch(addCurrentVideoId(loopId));
+        dispatch(selectActiveMovie(movies, loopId));
+        scrollIntoViewFunction(moviesArray, 0, "end");
         return {
           type: ADD_NEXT_VIDEOLINK,
-          payload: movies[0].src,
+          payload: moviesArray[0].src,
         };
       }
     }
@@ -45,27 +49,32 @@ export const addNextVideoLink = (dispatch, movies, id) => {
 };
 
 export const addPreviousVideoLink = (dispatch, movies, id) => {
-  dispatch(togglePlayVideo(true));
+  const moviesArray = [...Object.values(movies)];
   let previousIndex = 0;
-  for (let movie of movies) {
+
+  for (let movie of moviesArray) {
     if (movie.id === id) {
-      let currentIndex = movies.indexOf(movie);
+      let currentIndex = moviesArray.indexOf(movie);
       if (currentIndex > 0) {
         previousIndex = currentIndex - 1;
-        dispatch(addCurrentVideoId(movies[previousIndex].id));
-        dispatch(selectActiveMovie(movies, movies[previousIndex].id));
-        scrollIntoView(movies, previousIndex);
+        const previousId = moviesArray[previousIndex].id;
+        dispatch(togglePlayVideo(movies, previousId));
+        dispatch(addCurrentVideoId(previousId));
+        dispatch(selectActiveMovie(movies, previousId));
+        scrollIntoViewFunction(moviesArray, previousIndex,"center");
         return {
           type: ADD_PREVIOUS_VIDEOLINK,
-          payload: movies[previousIndex].src,
+          payload: moviesArray[previousIndex].src,
         };
       } else {
-        dispatch(addCurrentVideoId(movies[movies.length - 1].id));
-        dispatch(selectActiveMovie(movies, movies[movies.length - 1].id));
-        scrollIntoView(movies, movies.length - 1);
+        const loopId = moviesArray[moviesArray.length - 1].id;
+        dispatch(togglePlayVideo(movies, loopId));
+        dispatch(addCurrentVideoId(loopId));
+        dispatch(selectActiveMovie(movies, loopId));
+        scrollIntoViewFunction(moviesArray, moviesArray.length - 1);
         return {
           type: ADD_PREVIOUS_VIDEOLINK,
-          payload: movies[movies.length - 1].src,
+          payload: moviesArray[moviesArray.length - 1].src,
         };
       }
     }
@@ -79,12 +88,6 @@ export const addCurrentVideoId = (id) => {
   };
 };
 
-export const togglePlayVideo = (value) => {
-  return {
-    type: TOGGLE_PLAY_VIDEO,
-    payload: value,
-  };
-};
 export const toggleLoopVideo = (value) => {
   return {
     type: TOGGLE_LOOP_VIDEO,

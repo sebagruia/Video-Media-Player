@@ -4,45 +4,55 @@ import { connect } from "react-redux";
 import {
   addCurrentVideoLink,
   addCurrentVideoId,
-  togglePlayVideo,
 } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
+import { togglePlayVideo } from "../../redux/movies/movie-action";
 import { selectActiveMovie } from "../../redux/movies/movie-action";
-import { addRefKeyToEveryMovieObject } from "../../utils";
+import { addRefKeyToEveryMovieObject, scrollIntoViewFunction } from "../../utils";
+import PlayThin from "../../assets/icons/iconmonstr-play-white.png";
+import PauseWhite from "../../assets/icons/iconmonstr-pause-white.png";
 
-const Video = ({ dispatch, movies, videoLink, id, active, refToVideo, playValue }) => {
+const Video = ({
+  dispatch,
+  movies,
+  videoLink,
+  id,
+  active,
+  refToVideo,
+  playStatus,
+}) => {
   const refToVideoInList = useRef(null);
-
 
   useEffect(() => {
     addRefKeyToEveryMovieObject(id, refToVideoInList, movies);
   });
 
   const handleClick = () => {
-    dispatch(addCurrentVideoLink(videoLink));
-    dispatch(selectActiveMovie(movies, id));
-    dispatch(addCurrentVideoId(id));
-    refToVideoInList.current.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest",
-    });
-    if(playValue){
-      refToVideo.current.pause();
-      dispatch(togglePlayVideo(false));
+    if (movies[id].active === "false") {
+      dispatch(addCurrentVideoLink(videoLink));
+      dispatch(selectActiveMovie(movies, id));
+      dispatch(addCurrentVideoId(id));
     }
-    else{
-      refToVideo.current.play();
-      dispatch(togglePlayVideo(true));
+    scrollIntoViewFunction(movies,id,"center");
+
+    if (playStatus) {
+      refToVideo.current.pause();
+      dispatch(togglePlayVideo(movies, id));
+    }
+    else {
+      refToVideo.current.load();
+      dispatch(togglePlayVideo(movies, id));
     }
   };
 
   return (
     <div className="video-element">
-      <div className="video-box">
+      <div
+        className={`video-box ${active === "true" ? "activeClass" : ""}`}
+        onClick={handleClick}
+      >
         <video
           ref={refToVideoInList}
-          onClick={handleClick}
-          className={`video ${active === "true" ? "activeClass" : ""}`}
+          className="video"
           width="100%;"
           height="auto"
           role="button"
@@ -54,6 +64,13 @@ const Video = ({ dispatch, movies, videoLink, id, active, refToVideo, playValue 
           Your browser does not support the video tag.
         </video>
         <hr className={`hidden ${active === "true" ? "activeHr" : ""}`}></hr>
+        <div className={`video-element-play-pause-container ${active === "true" ? "video-element-position-overwrite" : ""}`}>
+          {playStatus && active === "true" ? (
+            <img src={PauseWhite} alt="pause thin icon" />
+          ) : (
+            <img src={PlayThin} alt="play thin icon" />
+          )}
+        </div>
       </div>
       <div className="video-text">
         <h6>{id}</h6>
@@ -65,8 +82,7 @@ const Video = ({ dispatch, movies, videoLink, id, active, refToVideo, playValue 
 const mapStateToProps = (state) => {
   return {
     movies: state.moviesReducer.movies,
-    playValue: state.currentMovieReducer.playValue,
-    refToVideo:state.currentMovieReducer.refToVideo,
+    refToVideo: state.currentMovieReducer.refToVideo,
   };
 };
 

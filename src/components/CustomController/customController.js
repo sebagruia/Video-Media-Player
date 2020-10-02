@@ -7,7 +7,7 @@ import {
   addNextVideoLink,
   addPreviousVideoLink,
 } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
-import { shuffle, clickPlay } from "../../utils";
+import { shuffle, clickPlay, scrollIntoViewFunction } from "../../utils";
 import { addShuffledMovieList } from "../../redux/movies/movie-action";
 import Play from "../../assets/icons/play.png";
 import Pause from "../../assets/icons/pause.png";
@@ -22,21 +22,19 @@ import AddMediaButton from "../AddMediaButton/addMediaButton";
 
 const CustomController = ({
   dispatch,
-  playValue,
   loopValue,
   shuffleValue,
   refToVideo,
   movies,
   id,
 }) => {
-
-  let currentPlayedMovieList = [];
-  const shuffledMovies = shuffle(Object.values(movies));
+  let currentPlayedMovieList = {};
+  const shuffledMovies = shuffle(movies);
 
   if (shuffleValue) {
-    currentPlayedMovieList = [...shuffledMovies];
+    currentPlayedMovieList = { ...shuffledMovies };
   } else {
-    currentPlayedMovieList = [...Object.values(movies)];
+    currentPlayedMovieList = { ...movies };
   }
 
   const handleClickLoop = () => {
@@ -57,7 +55,12 @@ const CustomController = ({
     }
   };
   const handleClickPlay = () => {
-    clickPlay(dispatch, id, playValue, refToVideo);
+    if (movies[id] === undefined) {
+      return;
+    }
+    let playStatus = movies[id].playStatus;
+    clickPlay(dispatch, id, movies, playStatus, refToVideo);
+    scrollIntoViewFunction(movies,id,"center");
   };
 
   const handleClickPrevious = () => {
@@ -65,7 +68,6 @@ const CustomController = ({
       dispatch(addPreviousVideoLink(dispatch, currentPlayedMovieList, id));
     }
   };
-
 
   return (
     <div className="customController">
@@ -101,7 +103,13 @@ const CustomController = ({
       <img
         onClick={handleClickPlay}
         className="big"
-        src={!playValue ? Play : Pause}
+        src={
+          movies[id] === undefined
+            ? Play
+            : !movies[id].playStatus
+            ? Play
+            : Pause
+        }
         alt="play icon"
         role="button"
       />
@@ -112,15 +120,12 @@ const CustomController = ({
         alt="next icon"
         role="button"
       />
-      
-    
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    playValue: state.currentMovieReducer.playValue,
     loopValue: state.currentMovieReducer.loopValue,
     shuffleValue: state.currentMovieReducer.shuffleValue,
     refToVideo: state.currentMovieReducer.refToVideo,

@@ -1,6 +1,6 @@
 import {
   ADD_CURRENT_VIDEOLINK,
-  TOGGLE_PLAY_VIDEO,
+  // TOGGLE_PLAY_VIDEO,
   TOGGLE_LOOP_VIDEO,
   TOGGLE_SHUFFLE,
   ADD_REF_TO_CURRENT_VIDEO,
@@ -12,7 +12,6 @@ import {
 const initialState = {
   id:"",
   currentVideoLink: null,
-  playValue:false,
   loopValue: false,
   shuffleValue: false,
   refToVideo:null
@@ -29,11 +28,6 @@ export const currentMovieReducer = (state = initialState, action) => {
       return {
         ...state,
         currentVideoLink: action.payload,
-      };
-    case TOGGLE_PLAY_VIDEO:
-      return {
-        ...state,
-        playValue: action.payload,
       };
     case ADD_PREVIOUS_VIDEOLINK:
       return {

@@ -19,6 +19,7 @@ const AddMediaButton = ({dispatch}) => {
       id: file.name,
       src: window.URL.createObjectURL(file),
       active: "false",
+      playStatus:false
     }));
 
     for (let object of objectsUrlArray) {
