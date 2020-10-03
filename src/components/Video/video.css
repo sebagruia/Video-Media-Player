@@ -37,11 +37,6 @@
   width:20px;
   height:20px;
 }
-..video-element-play-pause-container img{
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
 .video-element-position-overwrite{
   top:46%;
 }
@@ -89,6 +84,10 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   .activeHr {
     margin: 10px auto;
   }
+  .video-element-play-pause-container{
+    top:calc(50% - 10px);
+    left: calc(50% - 5px);
+  }
   
 }
 
@@ -99,5 +98,6 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 .video-element {
   height: 90px;
 }
+
 
 }
