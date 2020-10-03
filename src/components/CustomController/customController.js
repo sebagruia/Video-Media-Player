@@ -7,8 +7,13 @@ import {
   addNextVideoLink,
   addPreviousVideoLink,
 } from "../../redux/currentPlayedMovie/currentPlayedMovie-action";
-import { shuffle, clickPlay, scrollIntoViewFunction } from "../../utils";
-import { addShuffledMovieList } from "../../redux/movies/movie-action";
+import {
+  shuffle,
+  clickPlay,
+  scrollIntoViewFunction,
+  sortList,
+} from "../../utils";
+import { addShuffledMovieList, addSortedMovieList } from "../../redux/movies/movie-action";
 import Play from "../../assets/icons/play.png";
 import Pause from "../../assets/icons/pause.png";
 import Next from "../../assets/icons/next.png";
@@ -28,15 +33,20 @@ const CustomController = ({
   movies,
   id,
 }) => {
-
   const handleClickLoop = () => {
     dispatch(toggleLoopVideo(loopValue));
   };
 
   const handleClickShuffle = () => {
-    const shuffledMovies = shuffle(movies);
+    if (!shuffleValue) {
+      console.log(shuffleValue);
+      const shuffledMovies = shuffle(movies);
+      dispatch(addShuffledMovieList(shuffledMovies));
+    } else {
+      const moviesSorted = sortList(movies);
+      dispatch(addSortedMovieList(moviesSorted));
+    }
     dispatch(toggleSuffle(shuffleValue));
-    dispatch(addShuffledMovieList(shuffledMovies));
   };
 
   const handleClickReload = () => {
@@ -53,9 +63,8 @@ const CustomController = ({
       return;
     }
     let playStatus = movies[id].playStatus;
-    scrollIntoViewFunction(movies,id,"center");
+    scrollIntoViewFunction(movies, id, "center");
     clickPlay(dispatch, id, movies, playStatus, refToVideo);
-    
   };
 
   const handleClickPrevious = () => {

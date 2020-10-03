@@ -84,3 +84,22 @@ export const scrollIntoViewFunction = (movies,id, position)=>{
     inline: "nearest",
   });
 }
+
+export const sortList = (object)=>{
+  const movies = {};
+ const moviesArray =  Object.values(object).sort((a,b)=>{
+    let nameA = a.id.toUpperCase();
+    let nameB = b.id.toUpperCase();
+    if(nameA < nameB){
+      return -1
+    }
+    else if(nameA>nameB){
+      return 1
+    }
+    return 0
+  })
+  for (let object of moviesArray) {
+    movies[object.id] = object;
+  }
+  return movies;
+}

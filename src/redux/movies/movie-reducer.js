@@ -2,6 +2,7 @@ import {
   GET_MOVIES,
   SELECT_ACTIVE_MOVIE,
   ADD_SHUFFLED_MOVIE_LIST,
+  ADD_SORTED_MOVIE_LIST,
   TOGGLE_PLAY_VIDEO
 } from "./movie-action";
 
@@ -17,6 +18,11 @@ export const moviesReducer = (state = initialState, action) => {
         movies: {...action.payload},
       };
     case ADD_SHUFFLED_MOVIE_LIST:
+      return {
+        ...state,
+        movies: {...action.payload},
+      };
+    case ADD_SORTED_MOVIE_LIST:
       return {
         ...state,
         movies: {...action.payload},

@@ -1,6 +1,7 @@
 export const GET_MOVIES = "GET_MOVIES";
 export const SELECT_ACTIVE_MOVIE = "SELECT_ACTIVE_MOVIE";
 export const ADD_SHUFFLED_MOVIE_LIST = "ADD_SHUFFLED_MOVIE_LIST";
+export const ADD_SORTED_MOVIE_LIST = "ADD_SORTED_MOVIE_LIST";
 export const TOGGLE_PLAY_VIDEO = "TOGGLE_PLAY_VIDEO";
 
 export const getMoviesAction = (movies) => {
@@ -12,6 +13,12 @@ export const getMoviesAction = (movies) => {
 export const addShuffledMovieList = (movies) => {
   return {
     type: ADD_SHUFFLED_MOVIE_LIST,
+    payload: movies,
+  };
+};
+export const addSortedMovieList = (movies) => {
+  return {
+    type: ADD_SORTED_MOVIE_LIST,
     payload: movies,
   };
 };
